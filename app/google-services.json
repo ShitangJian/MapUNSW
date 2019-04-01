@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "901772278145",
+    "firebase_url": "https://infs3605team5database.firebaseio.com",
+    "project_id": "infs3605team5database",
+    "storage_bucket": "infs3605team5database.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901772278145:android:8798975d1d682c65",
+        "android_client_info": {
+          "package_name": "com.example.cris.programplaner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901772278145-01s964b5j0bk93brlil70phmhin109qf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cris.programplaner",
+            "certificate_hash": "92bdfbbd03f9926d803768584c30185b6018da2d"
+          }
+        },
+        {
+          "client_id": "901772278145-3s0cguqvuvbm9bmtg69lg5fdhi9omrmh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4i-aJFMuo5RjVKhGTJiQMuBVqlGSyPMw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "901772278145-3s0cguqvuvbm9bmtg69lg5fdhi9omrmh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
