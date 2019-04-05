@@ -12,6 +12,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -33,14 +34,16 @@ public class retrieve_core_course extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Course");
+        Query CoreQuery = ref.orderByChild("CourseType").equalTo("Core");
+        
         list = new ArrayList<>();
-        adapter = new ArrayAdapter<String>(this,R.layout.core_course_info,R.id.coreCoureInfo, list);
-        ref.addValueEventListener(new ValueEventListener() {
+        adapter = new ArrayAdapter<String>(this,R.layout.core_course_info,R.id.coreCourseInfo, list);
+        CoreQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren()){
                     course = ds.getValue(CoreCourse.class);
-                    list.add(course.getCode().toString());
+                    list.add(course.getCode());
                 }
                 listView.setAdapter(adapter);
             }

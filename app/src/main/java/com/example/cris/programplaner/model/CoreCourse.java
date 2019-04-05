@@ -1,7 +1,7 @@
 package com.example.cris.programplaner.model;
 
 public class CoreCourse {
-
+    //Data that is just numbers is stored in Long format in Firebase
     private String Code;
     private String Completed;
     private String CourseType;

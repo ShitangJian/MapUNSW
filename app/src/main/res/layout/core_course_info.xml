@@ -3,9 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    //To change formatting of the text in the listview, make changes in the textview below.
     <TextView
-        android:id="@+id/coreCoureInfo"
-        android:textSize="20sp"
+        android:id="@+id/coreCourseInfo"
+        android:textSize="40sp"
         android:text="course"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
