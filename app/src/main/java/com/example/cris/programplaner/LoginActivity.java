@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
         findViewById(R.id.btn_test).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, retrieve_core_course.class));
+                startActivity(new Intent(LoginActivity.this, RetrieveCourse.class));
                 finish();
             }
         });

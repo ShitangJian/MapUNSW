@@ -15,20 +15,16 @@
       },
       "oauth_client": [
         {
-          "client_id": "901772278145-22l35t62i4aj0ujvpltpc2vnjfpv3jo8.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.cris.programplaner",
-            "certificate_hash": "e46870a0942cb958a9f020d0b48251c1a65950d2"
-          }
-        },
-        {
           "client_id": "901772278145-01s964b5j0bk93brlil70phmhin109qf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.cris.programplaner",
             "certificate_hash": "92bdfbbd03f9926d803768584c30185b6018da2d"
           }
+        },
+        {
+          "client_id": "901772278145-3s0cguqvuvbm9bmtg69lg5fdhi9omrmh.apps.googleusercontent.com",
+          "client_type": 3
         }
       ],
       "api_key": [
@@ -37,13 +33,20 @@
         }
       ],
       "services": {
+        "analytics_service": {
+          "status": 1
+        },
         "appinvite_service": {
+          "status": 2,
           "other_platform_oauth_client": [
             {
               "client_id": "901772278145-3s0cguqvuvbm9bmtg69lg5fdhi9omrmh.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
+        },
+        "ads_service": {
+          "status": 2
         }
       }
     }

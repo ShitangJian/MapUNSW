@@ -1,10 +1,14 @@
 package com.example.cris.programplaner;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.cris.programplaner.model.CoreCourse;
 import com.example.cris.programplaner.model.Course;
@@ -17,7 +21,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class retrieve_core_course extends AppCompatActivity {
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
+public class RetrieveCourse extends AppCompatActivity {
 
     ListView listView;
     FirebaseDatabase database;
@@ -25,6 +31,7 @@ public class retrieve_core_course extends AppCompatActivity {
     ArrayList<String> list;
     ArrayAdapter <String> adapter;
     CoreCourse course;
+    public static String selectedCourse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +58,18 @@ public class retrieve_core_course extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+
+        //OnClickListener when clicking on a list item. Should direct to course overview page
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
+                Intent intent = new Intent(RetrieveCourse.this, course_overview.class);
+                selectedCourse = (listView.getItemAtPosition(i).toString());
+                intent.putExtra(EXTRA_MESSAGE, selectedCourse);
+                startActivity(intent);
+                Toast.makeText(RetrieveCourse.this, "You click on: " + selectedCourse, Toast.LENGTH_SHORT).show();
             }
         });
     }
