@@ -17,19 +17,4 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <android.support.v7.widget.CardView
-        android:layout_margin="16dp"
-        android:layout_width="match_parent"
-        app:cardCornerRadius="12dp"
-        android:layout_height="match_parent">
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycleview"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </android.support.v7.widget.RecyclerView>
-    </android.support.v7.widget.CardView>
-
 </LinearLayout>

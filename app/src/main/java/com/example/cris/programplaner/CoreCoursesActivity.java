@@ -28,7 +28,7 @@ public class CoreCoursesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_courses);
         onSetTitle();
         initTestData();
-        initView();
+        //initView();
     }
 
     private void initTestData() {
@@ -46,7 +46,7 @@ public class CoreCoursesActivity extends AppCompatActivity {
         datas.add(new Course("INFS 1612"));
     }
 
-    private void initView() {
+    /*private void initView() {
         recycleView =  findViewById(R.id.recycleview);
         recycleView.setLayoutManager(new LinearLayoutManager(this));
         courseAdapter = new CourseAdapter(this,datas);
@@ -60,7 +60,7 @@ public class CoreCoursesActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
+    }*/
 
     public void onSetTitle() {
         Toolbar toolbar = findViewById(R.id.at_toolbar);

@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
                 String data = datalist.get(i).getMenus().get(i1).getName();
                 if (data.equals("Core Courses")){
-                    startActivity(new Intent(MainActivity.this,CoreCoursesActivity.class));
+                    startActivity(new Intent(MainActivity.this,RetrieveCourse.class));
                 }
                 return false;
             }
