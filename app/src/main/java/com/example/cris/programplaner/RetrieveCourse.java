@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cris.programplaner.model.CoreCourse;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
-public class RetrieveCourse extends AppCompatActivity {
+public class RetrieveCourse extends MainActivity {
 
     ListView listView;
     FirebaseDatabase database;
@@ -39,10 +40,13 @@ public class RetrieveCourse extends AppCompatActivity {
 
         course = new CoreCourse();
         listView = (ListView) findViewById(R.id.listView);
+
+        title();
+
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Course");
         //if statement to capture core, free elective, prescribed elective or general education
-        Query CoreQuery = ref.orderByChild("CourseType").equalTo("Core");
+        Query CoreQuery = ref.orderByChild("CourseType").equalTo(MainActivity.courseType);
         
         list = new ArrayList<>();
         adapter = new ArrayAdapter<String>(this,R.layout.core_course_info,R.id.coreCourseInfo, list);
@@ -73,5 +77,22 @@ public class RetrieveCourse extends AppCompatActivity {
                 Toast.makeText(RetrieveCourse.this, "You click on: " + selectedCourse, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void title() {
+        TextView courseBrowserHeader = (TextView)findViewById(R.id.courseBrowserHeader);
+        String title = MainActivity.courseType;
+        if (title == "Core") {
+            courseBrowserHeader.setText("Core Courses");
+        }
+        else if (title == "PrescribedElective") {
+            courseBrowserHeader.setText("Prescribed Electives");
+        }
+        else if (title == "FreeElective") {
+            courseBrowserHeader.setText("Free Electives");
+        }
+        else if (title == "GeneralEducation") {
+            courseBrowserHeader.setText("General Education");
+        }
     }
 }

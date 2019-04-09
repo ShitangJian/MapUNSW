@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private ExpandableListView listview;
     private ExpandListViewAdapter adapter;
     private List<ExpandData> datalist = new ArrayList<>();
+    public static String courseType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +55,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
                 String data = datalist.get(i).getMenus().get(i1).getName();
-                if (data.equals("Core Courses")){
-                    startActivity(new Intent(MainActivity.this,RetrieveCourse.class));
+                if (data.equals("Core Courses")) {
+                    courseType = "Core";
                 }
+                else if (data.equals("Prescribed Electives")) {
+                    courseType = "PrescribedElective";
+                }
+                else if (data.equals("Free Electives")) {
+                    courseType = "FreeElective";
+                }
+                else if (data.equals("GE")) {
+                    courseType = "GeneralEducation";
+                }
+                startActivity(new Intent(MainActivity.this,RetrieveCourse.class));
                 return false;
             }
         });
@@ -69,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         expandData2.setName("Course OutLines");
         ArrayList<ChildData> arr2 = new ArrayList<>();
         arr2.add(new ChildData("Core Courses"));
+        arr2.add(new ChildData("Prescribed Electives"));
         arr2.add(new ChildData("Free Electives"));
         arr2.add(new ChildData("GE"));
         expandData2.setMenus(arr2);

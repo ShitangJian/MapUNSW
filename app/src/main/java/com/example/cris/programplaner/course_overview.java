@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-public class course_overview extends AppCompatActivity {
+public class course_overview extends MainActivity {
 
     FirebaseDatabase database;
     DatabaseReference refOverview;
@@ -31,19 +32,11 @@ public class course_overview extends AppCompatActivity {
         setContentView(R.layout.activity_course_overview);
 
 
-
-
-        //Make sure to re-use SelectedCourse as variable name in ListView of course browser
-
         course = new CoreCourse();
         prerequisite = new Prerequisite();
 
-
-        //TO-DO Term availabilities || Course Overview || Pre-requisites
-        // 1: Connect to database and look for course code
-        // 2: Term availabities (Convert to boolean?)
-        // 3: Get content and link to handbook
-        // 4: Determine Pre-requisites
+        //TO DO
+        // 1: Determine Pre-requisites
 
         database = FirebaseDatabase.getInstance();
         courseOverview();
@@ -57,6 +50,12 @@ public class course_overview extends AppCompatActivity {
 
     private void courseOverview() {
         TextView courseCodeHeader = findViewById(R.id.courseCodeHeader);
+
+        final TextView courseName = findViewById(R.id.courseName);
+        final TextView overview = findViewById(R.id.overview);
+        final TextView handbookLink = findViewById(R.id.handbook);
+        handbookLink.setMovementMethod(LinkMovementMethod.getInstance());
+
         final ImageView circleT1 = (ImageView)findViewById(R.id.circleT1);
         final ImageView circleT2 = (ImageView)findViewById(R.id.circleT2);
         final ImageView circleT3 = (ImageView)findViewById(R.id.circleT3);
@@ -79,6 +78,9 @@ public class course_overview extends AppCompatActivity {
                     if (course.getT3().equals("FALSE")){
                         circleT3.setColorFilter(Color.RED);
                     }
+                    courseName.setText(course.getName());
+                    overview.setText(course.getOverview());
+                    handbookLink.setText(course.getHandbook());
                 }
                 //Get Overview
 

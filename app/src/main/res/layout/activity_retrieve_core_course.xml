@@ -15,14 +15,15 @@
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Core Courses"
-        android:textColor="#000"
-        android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/courseBrowserHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="MAP UNSW"
+            android:textColor="#000"
+            android:textSize="18sp" />
 
     </android.support.v7.widget.Toolbar>
 
