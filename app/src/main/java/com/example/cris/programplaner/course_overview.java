@@ -23,21 +23,18 @@ public class course_overview extends AppCompatActivity {
     DatabaseReference refPrerequisite;
     CoreCourse course;
     Prerequisite prerequisite;
+    String SelectedCourse = RetrieveCourse.selectedCourse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_overview);
 
-        String SelectedCourse = RetrieveCourse.selectedCourse;
-        TextView courseCodeHeader = findViewById(R.id.courseCodeHeader);
-        final ImageView circleT1 = (ImageView)findViewById(R.id.circleT1);
-        final ImageView circleT2 = (ImageView)findViewById(R.id.circleT2);
-        final ImageView circleT3 = (ImageView)findViewById(R.id.circleT3);
-        final TextView tvPrerequisite = (TextView)findViewById(R.id.prerequisite);
+
+
 
         //Make sure to re-use SelectedCourse as variable name in ListView of course browser
-        courseCodeHeader.setText(SelectedCourse);
+
         course = new CoreCourse();
         prerequisite = new Prerequisite();
 
@@ -49,11 +46,23 @@ public class course_overview extends AppCompatActivity {
         // 4: Determine Pre-requisites
 
         database = FirebaseDatabase.getInstance();
+        courseOverview();
+        prerequisite();
+
+
+
+        //Display prerequisite(s)
+
+    }
+
+    private void courseOverview() {
+        TextView courseCodeHeader = findViewById(R.id.courseCodeHeader);
+        final ImageView circleT1 = (ImageView)findViewById(R.id.circleT1);
+        final ImageView circleT2 = (ImageView)findViewById(R.id.circleT2);
+        final ImageView circleT3 = (ImageView)findViewById(R.id.circleT3);
+        courseCodeHeader.setText(SelectedCourse);
         refOverview = database.getReference("Course"); //Snapshot of course table
         Query Overview = refOverview.orderByChild("Code").equalTo(SelectedCourse); //Find course user clicked on
-
-        refPrerequisite = database.getReference("Prerequisite"); //Snapshot of prerequisite table
-        Query Prerequisite = refPrerequisite.equalTo(SelectedCourse);
 
         Overview.addValueEventListener(new ValueEventListener() {
             @Override
@@ -81,8 +90,13 @@ public class course_overview extends AppCompatActivity {
 
             }
         });
+    }
 
-        //Display prerequisite(s)
+    private void prerequisite() {
+
+        final TextView tvPrerequisite = (TextView)findViewById(R.id.prerequisite);
+        refPrerequisite = database.getReference();
+        Query Prerequisite = refPrerequisite.orderByChild(SelectedCourse);
         Prerequisite.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot2) {
@@ -97,5 +111,9 @@ public class course_overview extends AppCompatActivity {
 
             }
         });
+
     }
+
 }
+
+

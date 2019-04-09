@@ -41,6 +41,7 @@ public class RetrieveCourse extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Course");
+        //if statement to capture core, free elective, prescribed elective or general education
         Query CoreQuery = ref.orderByChild("CourseType").equalTo("Core");
         
         list = new ArrayList<>();
