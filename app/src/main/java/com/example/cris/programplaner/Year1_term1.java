@@ -79,7 +79,7 @@ public class Year1_term1 extends AppCompatActivity {
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                mDatabase.child(UserID).child("S1T1").setValue(scourse);
+                mDatabase.child(UserID).child("Y1T1").setValue(scourse);
             }
 
             @Override

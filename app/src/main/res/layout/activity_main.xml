@@ -56,11 +56,12 @@
             android:layout_height="60dp">
 
             <TextView
+                android:id="@+id/goto_planner"
                 android:layout_marginLeft="16dp"
                 android:layout_centerVertical="true"
                 android:textColor="#323232"
                 android:textSize="16sp"
-                android:text="program preview "
+                android:text="Program planner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <ImageView

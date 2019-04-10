@@ -47,7 +47,7 @@ public class Search extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         list = new ArrayList<>();
         ref = database.getReference("Course");
-        adapter = new ArrayAdapter<String>(this, R.layout.search_format, R.id.coreCoureInfo, list);
+        adapter = new ArrayAdapter<String>(this, R.layout.search_format, R.id.coreCourseInfo, list);
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

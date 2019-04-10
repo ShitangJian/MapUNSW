@@ -139,8 +139,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                             uploadimage();
                             uploadDetail();
 
-                            startActivity(new Intent(Register.this, Year1_term1.class));
-                            finish();
+                            startActivity(new Intent(Register.this, MainActivity.class));
                         } else {
                             //display some message here
                             Toast.makeText(Register.this, "Registration Error", Toast.LENGTH_LONG).show();

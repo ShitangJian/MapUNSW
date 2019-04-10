@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     File localFile;
     DatabaseReference reff;
+    public static String courseType;
 
 
     @Override
@@ -102,6 +104,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        TextView planner = (TextView) findViewById(R.id.goto_planner);
+        planner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,JoinPlanActivity.class));
+            }
+        });
+
 
         drawerLayout = (DrawerLayout) findViewById(R.id.DrawerLayout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.Open,R.string.Close);
@@ -128,9 +138,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
                 String data = datalist.get(i).getMenus().get(i1).getName();
-                if (data.equals("Core Courses")){
-                    startActivity(new Intent(MainActivity.this,CoreCoursesActivity.class));
+                if (data.equals("Core Courses")) {
+                    courseType = "Core";
                 }
+                else if (data.equals("Prescribed Electives")) {
+                    courseType = "PrescribedElective";
+                }
+                else if (data.equals("Free Electives")) {
+                    courseType = "FreeElective";
+                }
+                else if (data.equals("GE")) {
+                    courseType = "GeneralEducation";
+                }
+                startActivity(new Intent(MainActivity.this,RetrieveCourse.class));
                 return false;
             }
         });
@@ -143,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
         expandData2.setName("Course OutLines");
         ArrayList<ChildData> arr2 = new ArrayList<>();
         arr2.add(new ChildData("Core Courses"));
+        arr2.add(new ChildData("Prescribed Electives"));
         arr2.add(new ChildData("Free Electives"));
         arr2.add(new ChildData("GE"));
         expandData2.setMenus(arr2);
