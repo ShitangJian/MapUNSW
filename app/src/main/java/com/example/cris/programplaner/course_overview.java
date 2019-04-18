@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 public class course_overview extends MainActivity {
 
     FirebaseDatabase database;
+    DatabaseReference refDatabase;
     DatabaseReference refOverview;
     DatabaseReference refPrerequisite;
     CoreCourse course;
@@ -37,8 +38,8 @@ public class course_overview extends MainActivity {
 
         //TO DO
         // 1: Determine Pre-requisites
-
         database = FirebaseDatabase.getInstance();
+        refDatabase = FirebaseDatabase.getInstance().getReference();
         courseOverview();
         prerequisite();
 
@@ -60,7 +61,7 @@ public class course_overview extends MainActivity {
         final ImageView circleT2 = (ImageView)findViewById(R.id.circleT2);
         final ImageView circleT3 = (ImageView)findViewById(R.id.circleT3);
         courseCodeHeader.setText(SelectedCourse);
-        refOverview = database.getReference("Course"); //Snapshot of course table
+        refOverview = refDatabase.child("Course"); //Snapshot of course table
         Query Overview = refOverview.orderByChild("Code").equalTo(SelectedCourse); //Find course user clicked on
 
         Overview.addValueEventListener(new ValueEventListener() {
@@ -97,8 +98,8 @@ public class course_overview extends MainActivity {
     private void prerequisite() {
 
         final TextView tvPrerequisite = (TextView)findViewById(R.id.prerequisite);
-        refPrerequisite = database.getReference();
-        Query Prerequisite = refPrerequisite.orderByChild(SelectedCourse);
+        refPrerequisite = refDatabase.child("Prerequisite");
+        final Query Prerequisite = refPrerequisite.orderByChild("Code").equalTo(SelectedCourse);
         Prerequisite.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot2) {
