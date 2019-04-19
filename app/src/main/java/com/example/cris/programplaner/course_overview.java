@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-public class course_overview extends MainActivity {
+public class course_overview extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference refOverview;
@@ -29,7 +29,7 @@ public class course_overview extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_course_overview);
+        setContentView(R.layout.activity_special);
 
 
         course = new CoreCourse();
@@ -49,17 +49,16 @@ public class course_overview extends MainActivity {
     }
 
     private void courseOverview() {
-        TextView courseCodeHeader = findViewById(R.id.courseCodeHeader);
+        final TextView courseCodeHeader = findViewById(R.id.courseCodeHeader);
 
         final TextView courseName = findViewById(R.id.courseName);
         final TextView overview = findViewById(R.id.overview);
         final TextView handbookLink = findViewById(R.id.handbook);
         handbookLink.setMovementMethod(LinkMovementMethod.getInstance());
 
-        final ImageView circleT1 = (ImageView)findViewById(R.id.circleT1);
-        final ImageView circleT2 = (ImageView)findViewById(R.id.circleT2);
-        final ImageView circleT3 = (ImageView)findViewById(R.id.circleT3);
-        courseCodeHeader.setText(SelectedCourse);
+        final TextView circleT1 = (TextView)findViewById(R.id.circleT1);
+        final TextView circleT2 = (TextView)findViewById(R.id.circleT2);
+        final TextView circleT3 = (TextView)findViewById(R.id.circleT3);
         refOverview = database.getReference("Course"); //Snapshot of course table
         Query Overview = refOverview.orderByChild("Code").equalTo(SelectedCourse); //Find course user clicked on
 
@@ -69,7 +68,7 @@ public class course_overview extends MainActivity {
                 //Determine term availability
                 for (DataSnapshot ds: dataSnapshot.getChildren()){
                     course = ds.getValue(CoreCourse.class);
-                    if (course.getT1().equals("FALSE")){
+                    /*if (course.getT1().equals("FALSE")){
                         circleT1.setColorFilter(Color.RED);
                     }
                     if (course.getT2().equals("FALSE")){
@@ -77,8 +76,9 @@ public class course_overview extends MainActivity {
                     }
                     if (course.getT3().equals("FALSE")){
                         circleT3.setColorFilter(Color.RED);
-                    }
-                    courseName.setText(course.getName());
+                    }*/
+                    courseName.setText(course.getCode());
+                    courseCodeHeader.setText(course.getName());
                     overview.setText(course.getOverview());
                     handbookLink.setText(course.getHandbook());
                 }
