@@ -3,16 +3,21 @@ package com.example.cris.programplaner.model;
 public class Prerequisite {
     //Prerequisite Table
     private String courseCode;
-    private String p1;
-    private String p2;
+    private String P1;
+    private String P2;
 
     public Prerequisite() {
     }
 
-    public Prerequisite(String courseCode, String p1, String p2) {
+    public Prerequisite(String courseCode, String P1) {
         this.courseCode = courseCode;
-        this.p1 = p1;
-        this.p2 = p2;
+        this.P1 = P1;
+    }
+
+    public Prerequisite(String courseCode, String P1, String P2) {
+        this.courseCode = courseCode;
+        this.P1 = P1;
+        this.P2 = P2;
     }
 
     public String getCourseCode() {
@@ -24,18 +29,18 @@ public class Prerequisite {
     }
 
     public String getP1() {
-        return p1;
+        return P1;
     }
 
     public void setP1(String p1) {
-        this.p1 = p1;
+        this.P1 = P1;
     }
 
     public String getP2() {
-        return p2;
+        return P2;
     }
 
     public void setP2(String p2) {
-        this.p2 = p2;
+        this.P2 = P2;
     }
 }

@@ -117,47 +117,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.804">
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Course Overview"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Term 1 Year 1"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="14dp" />
-
         <ListView
-            android:layout_width="244dp"
-            android:layout_height="56dp" />
-
-        <Space
+            android:id="@+id/listViewOverview"
             android:layout_width="match_parent"
-            android:layout_height="14dp" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView27"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Term 2 Year 1"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="14dp" />
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="63dp" />
-
+        </ListView>
     </LinearLayout>
 
     <Button
