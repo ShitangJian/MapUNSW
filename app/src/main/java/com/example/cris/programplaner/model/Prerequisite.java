@@ -9,6 +9,11 @@ public class Prerequisite {
     public Prerequisite() {
     }
 
+    public Prerequisite(String courseCode, String p1) {
+        this.courseCode = courseCode;
+        this.p1 = p1;
+    }
+
     public Prerequisite(String courseCode, String p1, String p2) {
         this.courseCode = courseCode;
         this.p1 = p1;
