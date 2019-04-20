@@ -56,9 +56,9 @@ public class course_overview extends AppCompatActivity {
         final TextView handbookLink = findViewById(R.id.handbook);
         handbookLink.setMovementMethod(LinkMovementMethod.getInstance());
 
-        final TextView circleT1 = (TextView)findViewById(R.id.circleT1);
+        /*final TextView circleT1 = (TextView)findViewById(R.id.circleT1);
         final TextView circleT2 = (TextView)findViewById(R.id.circleT2);
-        final TextView circleT3 = (TextView)findViewById(R.id.circleT3);
+        final TextView circleT3 = (TextView)findViewById(R.id.circleT3);*/
         refOverview = database.getReference("Course"); //Snapshot of course table
         Query Overview = refOverview.orderByChild("Code").equalTo(SelectedCourse); //Find course user clicked on
 
@@ -104,7 +104,11 @@ public class course_overview extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot2) {
                 for (DataSnapshot ds2: dataSnapshot2.getChildren()) {
                     prerequisite = ds2.getValue(Prerequisite.class);
-                    tvPrerequisite.setText(prerequisite.getP1() + " " + prerequisite.getP2());
+                    if (prerequisite.getP2() != null)
+                    tvPrerequisite.setText(prerequisite.getP1() + "  |  " + prerequisite.getP2());
+                    else {
+                        tvPrerequisite.setText(prerequisite.getP1());
+                    }
                 }
             }
 

@@ -139,7 +139,7 @@
         android:layout_width="250dp"
         android:layout_height="44dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/button"
         android:gravity="center"
         android:text="Join the plan"
@@ -149,7 +149,7 @@
     <LinearLayout
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -195,7 +195,7 @@
             android:textIsSelectable="true"
             android:autoLink="web"
             android:textColor="#FFD71B"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
 </LinearLayout>
