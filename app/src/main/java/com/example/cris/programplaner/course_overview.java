@@ -97,14 +97,14 @@ public class course_overview extends MainActivity {
     private void prerequisite() {
 
         final TextView tvPrerequisite = (TextView)findViewById(R.id.prerequisite);
-        refPrerequisite = database.getReference();
-        Query Prerequisite = refPrerequisite.orderByChild(SelectedCourse);
+        refPrerequisite = database.getReference("Prerequisite");
+        Query Prerequisite = refPrerequisite.orderByChild("Code").equalTo(SelectedCourse);
         Prerequisite.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot2) {
                 for (DataSnapshot ds2: dataSnapshot2.getChildren()) {
                     prerequisite = ds2.getValue(Prerequisite.class);
-                    tvPrerequisite.setText(prerequisite.getP1());
+                    tvPrerequisite.setText(prerequisite.getP1() + " " + prerequisite.getP2());
                 }
             }
 
