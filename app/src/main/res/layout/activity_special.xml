@@ -144,6 +144,8 @@
         android:gravity="center"
         android:text="Join the plan"
         android:textColor="#fff"
+        android:onClick="onClick"
+        android:clickable="true"
         android:textSize="20sp" />
 
     <LinearLayout

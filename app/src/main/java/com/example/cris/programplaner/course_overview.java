@@ -1,10 +1,12 @@
 package com.example.cris.programplaner;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class course_overview extends AppCompatActivity {
 
@@ -42,8 +46,13 @@ public class course_overview extends AppCompatActivity {
         courseOverview();
         prerequisite();
 
-
-
+        TextView tvJoin = (TextView) findViewById(R.id.tv_join);
+        tvJoin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(course_overview.this,CourseOverview.class));
+            }
+        });
         //Display prerequisite(s)
 
     }
