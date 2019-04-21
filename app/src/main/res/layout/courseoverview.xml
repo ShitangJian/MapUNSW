@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
@@ -68,22 +68,24 @@
 
     <TextView
         android:id="@+id/textView7"
-        android:layout_width="172dp"
-        android:layout_height="55dp"
+        android:layout_width="250dp"
+        android:layout_height="92dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Here is the description of Information System"
+        android:gravity="center"
+        android:text="@string/DegreeOverview"
+        android:textSize="14dp"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.246" />
+        app:layout_constraintVertical_bias="0.233" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -95,8 +97,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.874"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:srcCompat="@drawable/box2" />
 
     <LinearLayout
@@ -120,19 +121,13 @@
         <ListView
             android:id="@+id/listViewOverview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="249dp"
+            android:layout_marginTop="30dp">
 
 
         </ListView>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="182dp"
-        android:layout_height="37dp"
-        android:background="@drawable/button"
-        android:text="Confirm"
-        tools:layout_editor_absoluteX="114dp"
-        tools:layout_editor_absoluteY="687dp" />
+
 
 </android.support.constraint.ConstraintLayout>

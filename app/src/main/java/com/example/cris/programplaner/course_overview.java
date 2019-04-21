@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.cris.programplaner.model.CoreCourse;
@@ -46,6 +47,13 @@ public class course_overview extends MainActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(course_overview.this, JoinPlanActivity.class));
+            }
+        });
+        Button degreeOverview = findViewById(R.id.goToDegreeOverview);
+        degreeOverview.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(course_overview.this,CourseOverview.class));
             }
         });
 
