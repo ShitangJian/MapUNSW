@@ -5,6 +5,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="DegreeOverview">Welcome to MAP UNSW!\nTo browse all Information Systems courses, head over to the course browser, or start planning by jumping to the program planner!</string>
 
 
 </resources>
