@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.cris.programplaner.model.CoreCourse;
@@ -33,6 +34,7 @@ public class course_overview extends MainActivity {
         setContentView(R.layout.activity_special);
 
 
+
         course = new CoreCourse();
         prerequisite = new Prerequisite();
 
@@ -49,7 +51,7 @@ public class course_overview extends MainActivity {
                 startActivity(new Intent(course_overview.this, JoinPlanActivity.class));
             }
         });
-        Button degreeOverview = findViewById(R.id.goToDegreeOverview);
+        Button degreeOverview = findViewById(R.id.goToDegreeOverview1);
         degreeOverview.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {

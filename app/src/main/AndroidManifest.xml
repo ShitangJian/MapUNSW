@@ -39,6 +39,7 @@
         <activity android:name=".core_course" />
         <activity android:name=".course_overview" />
         <activity android:name=".RetrieveCourse" />
+        <activity android:name=".DegreeOverview"/>
     </application>
 
 </manifest>

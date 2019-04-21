@@ -22,6 +22,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -36,24 +37,33 @@ public class Search extends AppCompatActivity {
     ArrayList<String> list;
     CoreCourse course;
     SearchView searchView;
+    int term;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        term = getIntent().getIntExtra("term", 0);
         search_course = (ListView) findViewById(R.id.courselist);
         course = new CoreCourse();
         database = FirebaseDatabase.getInstance();
         list = new ArrayList<>();
         ref = database.getReference("Course");
         adapter = new ArrayAdapter<String>(this, R.layout.search_format, R.id.coreCourseInfo, list);
-        ref.addValueEventListener(new ValueEventListener() {
+        if (term == 1 || term == 4 || term == 7) {
+
+        Query T1 = ref.orderByChild("T1").equalTo("TRUE");
+        T1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     course = ds.getValue(CoreCourse.class);
+
+
                     list.add(course.getCode());
+
+
                 }
 
                 search_course.setAdapter(adapter);
@@ -67,6 +77,62 @@ public class Search extends AppCompatActivity {
             }
         });
 
+    }
+
+        if (term == 2 || term == 5 || term == 8) {
+
+            Query T1 = ref.orderByChild("T2").equalTo("TRUE");
+            T1.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        course = ds.getValue(CoreCourse.class);
+
+
+                        list.add(course.getCode());
+
+
+                    }
+
+                    search_course.setAdapter(adapter);
+
+                }
+
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+        }
+        if (term == 3 || term == 6 || term == 9) {
+
+            Query T1 = ref.orderByChild("T3").equalTo("TRUE");
+            T1.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        course = ds.getValue(CoreCourse.class);
+
+
+                        list.add(course.getCode());
+
+
+                    }
+
+                    search_course.setAdapter(adapter);
+
+                }
+
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+        }
 
 
         search_course.setOnItemClickListener(new AdapterView.OnItemClickListener() {

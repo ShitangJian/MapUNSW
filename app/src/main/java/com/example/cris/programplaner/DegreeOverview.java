@@ -1,10 +1,13 @@
 package com.example.cris.programplaner;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.cris.programplaner.model.PlannedCourse;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,6 +35,7 @@ public class DegreeOverview extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         UserID = mAuth.getCurrentUser().getUid();
+
 
         plannedCourse = new PlannedCourse();
         listview = (ListView) findViewById(R.id.listViewOverview);
