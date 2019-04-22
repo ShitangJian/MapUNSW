@@ -42,13 +42,8 @@ public class course_overview extends MainActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_special);
 
-
-
         course = new CoreCourse();
         prerequisite = new Prerequisite();
-
-        //TO DO
-        // 1: Determine Pre-requisites
 
         database = FirebaseDatabase.getInstance();
         createlist();
@@ -62,16 +57,6 @@ public class course_overview extends MainActivity {
 
             }
         });
-        Button degreeOverview = findViewById(R.id.goToDegreeOverview1);
-        degreeOverview.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(course_overview.this,CourseOverview.class));
-            }
-        });
-
-
-        //Display prerequisite(s)
 
     }
 

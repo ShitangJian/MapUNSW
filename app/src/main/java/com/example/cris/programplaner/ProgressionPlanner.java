@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -47,15 +48,16 @@ public class ProgressionPlanner extends AppCompatActivity {
     CircleImageView icon;
     DatabaseReference reff;
     TextView name;
+    int UoC;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private ExpandableListView listview;
     private ExpandListViewAdapter adapter;
     private List<ExpandData> datalist = new ArrayList<>();
-    public static String courseType;
     DatabaseReference ref;
     ListView listView;
     ArrayList<String> list;
+    ArrayList<String> listUoC;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_term);
@@ -70,6 +72,7 @@ public class ProgressionPlanner extends AppCompatActivity {
         Button T7 = (Button) findViewById(R.id.term7);
         Button T8 = (Button) findViewById(R.id.term8);
         Button T9 = (Button) findViewById(R.id.term9);
+        final TextView unitsOfCredit = findViewById(R.id.tv_credit);
         loadPhoto();
         loadname();
         implementNavi();
@@ -147,7 +150,36 @@ public class ProgressionPlanner extends AppCompatActivity {
                 startActivity(term1);
             }
         });
+        listUoC = new ArrayList<>();
+        ref = FirebaseDatabase.getInstance().getReference("User").child(UserID);
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot3) {
+                for (DataSnapshot ds3: dataSnapshot3.getChildren()) {
+                    String course1 = ds3.child("course1").getValue(String.class);
+                    String course2 = ds3.child("course2").getValue(String.class);
+                    String course3 = ds3.child("course3").getValue(String.class);
 
+                    if (course1 != null) {
+                        listUoC.add(course1);
+                    }
+                    if (course2 != null){
+                        listUoC.add(course2);
+                    }
+                    if (course3 != null) {
+                        listUoC.add(course3);
+                    }
+                }
+                UoC = listUoC.size() * 6;
+                String units = Integer.toString(UoC);
+                unitsOfCredit.setText(units);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void loadname() {
@@ -287,13 +319,13 @@ public class ProgressionPlanner extends AppCompatActivity {
             public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
                 String data = datalist.get(i).getMenus().get(i1).getName();
                 if (data.equals("Core Courses")) {
-                    courseType = "Core";
+                    RetrieveCourse.courseType = "Core";
                 }
                 else if (data.equals("Prescribed Electives")) {
-                    courseType = "PrescribedElective";
+                    RetrieveCourse.courseType = "PrescribedElective";
                 }
                 else if (data.equals("Free Electives")) {
-                    courseType = "FreeElective";
+                    RetrieveCourse.courseType = "FreeElective";
                 }
                 //else if (data.equals("GE")) {
                 //  courseType = "GeneralEducation";

@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     File localFile;
     DatabaseReference reff;
-    public static String courseType;
+
     DatabaseReference ref;
     ListView listView;
     ArrayList<String> list;
@@ -159,13 +159,13 @@ public class MainActivity extends AppCompatActivity {
             public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
                 String data = datalist.get(i).getMenus().get(i1).getName();
                 if (data.equals("Core Courses")) {
-                    courseType = "Core";
+                    RetrieveCourse.courseType = "Core";
                 }
                 else if (data.equals("Prescribed Electives")) {
-                    courseType = "PrescribedElective";
+                    RetrieveCourse.courseType = "PrescribedElective";
                 }
                 else if (data.equals("Free Electives")) {
-                    courseType = "FreeElective";
+                    RetrieveCourse.courseType = "FreeElective";
                 }
                 //else if (data.equals("GE")) {
                   //  courseType = "GeneralEducation";

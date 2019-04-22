@@ -32,6 +32,7 @@ public class RetrieveCourse extends MainActivity {
     ArrayList<String> list;
     ArrayAdapter <String> adapter;
     CoreCourse course;
+    public static String courseType;
     public static String selectedCourse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,7 @@ public class RetrieveCourse extends MainActivity {
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Course");
         //if statement to capture core, free elective, prescribed elective or general education
-        Query CoreQuery = ref.orderByChild("CourseType").equalTo(MainActivity.courseType);
+        Query CoreQuery = ref.orderByChild("CourseType").equalTo(courseType);
 
         list = new ArrayList<>();
         adapter = new ArrayAdapter<String>(this,R.layout.search_format,R.id.coreCourseInfo, list);
@@ -81,7 +82,7 @@ public class RetrieveCourse extends MainActivity {
 
     public void title() {
         TextView courseBrowserHeader = (TextView)findViewById(R.id.courseBrowserHeader);
-        String title = MainActivity.courseType;
+        String title = RetrieveCourse.courseType;
         if (title == "Core") {
             courseBrowserHeader.setText("Core Courses");
         }
