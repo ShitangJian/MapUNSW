@@ -108,18 +108,17 @@ public class Year1_term1 extends AppCompatActivity {
         });
         adapter = new ArrayAdapter<String>(this,R.layout.degree_overview_format,R.id.degreeOverviewInfo, list);
         ref = FirebaseDatabase.getInstance().getReference("User").child(UserID);
-        listView = findViewById(R.id.listViewOverview);
+
 
         list = new ArrayList<>();
 
-        ValueEventListener eventListener = new ValueEventListener() {
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
                     String course1 = ds.child("course1").getValue(String.class);
                     String course2 = ds.child("course2").getValue(String.class);
                     String course3 = ds.child("course3").getValue(String.class);
-                    Log.d("TAG", course1 + " | " + course2 + " | " + course3);
 
                     if (course1 != null) {
                         list.add(course1);
@@ -131,24 +130,19 @@ public class Year1_term1 extends AppCompatActivity {
                         list.add(course3);
                     }
                 }
-                listView.setAdapter(adapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        };
+        });
         comfirmcourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 getValue();
 
-
-
-
-                //the list size is 0 could not find item 
 
                 if (list.contains(scourse.getCourse1())) {
                     Toast.makeText(Year1_term1.this, "You have planned " + scourse.getCourse1() + " already", Toast.LENGTH_LONG).show();

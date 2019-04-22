@@ -62,6 +62,9 @@ public class CourseOverview extends AppCompatActivity {
                     }
                 }
                 listView.setAdapter(adapter);
+                for (int i = 0; i < list.size(); i++) {
+                    System.out.println(list.get(i));
+                }
             }
 
             @Override
