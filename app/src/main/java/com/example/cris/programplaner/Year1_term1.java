@@ -157,7 +157,7 @@ public class Year1_term1 extends AppCompatActivity {
                             course3 = dataSnapshot.child("Term" + Term).child("course3").getValue().toString();
                             course1_3.setText(course3);
                         } catch (Exception e) {
-                            course1_3.setText("course 3");
+                            course1_3.setText("Course 3");
 
                         }
 
@@ -171,7 +171,7 @@ public class Year1_term1 extends AppCompatActivity {
 
 
             } catch (Exception e) {
-                course1_3.setText("course 3");
+                course1_3.setText("Course 3");
 
 
             }
@@ -188,7 +188,7 @@ public class Year1_term1 extends AppCompatActivity {
                         course2 = dataSnapshot.child("Term" + Term).child("course2").getValue().toString();
                         course1_2.setText(course2);
                     } catch (Exception e) {
-                        course1_2.setText("course 2");
+                        course1_2.setText("Course 2");
 
                     }
 
@@ -202,7 +202,7 @@ public class Year1_term1 extends AppCompatActivity {
 
 
         } catch (Exception e) {
-            course1_2.setText("course 2");
+            course1_2.setText("Course 2");
         }
     }
 
@@ -216,7 +216,7 @@ public class Year1_term1 extends AppCompatActivity {
                         course1 = dataSnapshot.child("Term" + Term).child("course1").getValue().toString();
                         course1_1.setText(course1);
                     } catch (Exception e) {
-                        course1_1.setText("course 1");
+                        course1_1.setText("Course 1");
 
                     }
 
@@ -230,38 +230,38 @@ public class Year1_term1 extends AppCompatActivity {
 
 
         } catch (Exception e) {
-            course1_1.setText("course 1");
+            course1_1.setText("Course 1");
         }
     }
 
     private void changeTerm(int i) {
         switch (term) {
             case 1:
-                Semster.setText("Year1 term1");
+                Semster.setText("Year 1 Term 1");
                 break;
             case 2:
-                Semster.setText("Year1 term2");
+                Semster.setText("Year 1 Term 2");
                 break;
             case 3:
-                Semster.setText("Year1 term3");
+                Semster.setText("Year 1 Term 3");
                 break;
             case 4:
-                Semster.setText("Year2 term1");
+                Semster.setText("Year 2 Term 1");
                 break;
             case 5:
-                Semster.setText("Year2 term2");
+                Semster.setText("Year 2 Term 2");
                 break;
             case 6:
-                Semster.setText("Year2 term3");
+                Semster.setText("Year 2 Term 3 ");
                 break;
             case 7:
-                Semster.setText("Year3 term1");
+                Semster.setText("Year 3 Term 1");
                 break;
             case 8:
-                Semster.setText("Year3 term2");
+                Semster.setText("Year 3 Term 2");
                 break;
             case 9:
-                Semster.setText("Year3 term3");
+                Semster.setText("Year 3 Term 3");
                 break;
 
         }

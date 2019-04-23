@@ -376,7 +376,7 @@
             android:layout_centerVertical="true"
             android:textColor="#323232"
             android:textSize="16sp"
-            android:text="Courses Overview"
+            android:text="Degree Overview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <ExpandableListView
