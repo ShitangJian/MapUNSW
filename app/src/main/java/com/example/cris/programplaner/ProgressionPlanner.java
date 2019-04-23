@@ -47,7 +47,7 @@ public class ProgressionPlanner extends AppCompatActivity {
     File localFile;
     CircleImageView icon,icon2;
     DatabaseReference reff;
-    TextView name;
+    TextView name, name1;
     int UoC;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
@@ -62,7 +62,7 @@ public class ProgressionPlanner extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_term);
         icon2 = (CircleImageView) findViewById(R.id.profile_image_icon1);
-        name= (TextView)findViewById(R.id.name1);
+        name1= (TextView)findViewById(R.id.name1);
         Button T1 = (Button) findViewById(R.id.term1);
         Button T2 = (Button) findViewById(R.id.term2);
         Button T3 = (Button) findViewById(R.id.term3);
@@ -189,6 +189,7 @@ public class ProgressionPlanner extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String nameee = dataSnapshot.child("name").getValue().toString();
                 name.setText(nameee);
+                name1.setText(nameee);
             }
 
             @Override
