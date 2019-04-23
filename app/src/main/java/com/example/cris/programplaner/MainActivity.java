@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private ExpandableListView listview;
     private ExpandListViewAdapter adapter;
     private List<ExpandData> datalist = new ArrayList<>();
-    CircleImageView icon;
+    CircleImageView icon,icon1;
     TextView name;
     String UserID;
     FirebaseAuth mAuth;
@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         UserID = mAuth.getCurrentUser().getUid();
 
         icon = (CircleImageView) findViewById(R.id.profile_image2);
+        icon1 = (CircleImageView)findViewById(R.id.profile_image_icon2);
         name = (TextView)findViewById(R.id.username);
 
         StorageReference ref = FirebaseStorage.getInstance()
@@ -91,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                             Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
                             icon.setImageBitmap(bitmap);
+                            icon1.setImageBitmap(bitmap);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                 @Override
