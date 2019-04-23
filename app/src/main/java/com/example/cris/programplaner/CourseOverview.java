@@ -1,5 +1,6 @@
 package com.example.cris.programplaner;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -8,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -21,6 +24,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class CourseOverview extends AppCompatActivity {
 
@@ -55,7 +60,7 @@ public class CourseOverview extends AppCompatActivity {
                     String course1 = ds.child("course1").getValue(String.class);
                     String course2 = ds.child("course2").getValue(String.class);
                     String course3 = ds.child("course3").getValue(String.class);
-                    Log.d("TAG", course1 + " | " + course2 + " | " + course3);
+                    //Log.d("TAG", course1 + " | " + course2 + " | " + course3);
 
                     if (course1 != null) {
                         list.add(course1);
@@ -80,6 +85,14 @@ public class CourseOverview extends AppCompatActivity {
         };
         ref.addListenerForSingleValueEvent(eventListener);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
+                Intent intent = new Intent(getApplicationContext(), course_overview.class);
+                course_overview.selectedCourse = (listView.getItemAtPosition(i).toString());
+                startActivity(intent);
+            }
+        });
         //Toast.makeText(getApplicationContext(), "Total number of items are " + listView.getAdapter().getCount(), Toast.LENGTH_LONG).show();
     }
 

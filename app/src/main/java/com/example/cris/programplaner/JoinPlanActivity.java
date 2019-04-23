@@ -42,7 +42,7 @@ public class JoinPlanActivity extends AppCompatActivity {
         scourse = new SemsterCourse();
         mAuth = FirebaseAuth.getInstance();
         UserID = mAuth.getCurrentUser().getUid();
-        course = RetrieveCourse.selectedCourse;
+        course = course_overview.selectedCourse;
         coursedetail= new CoreCourse();
         refff = FirebaseDatabase.getInstance().getReference("Course");
         refff.addListenerForSingleValueEvent(new ValueEventListener() {

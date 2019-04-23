@@ -42,7 +42,7 @@ public class SpecialCoursesActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_special);
-        course = RetrieveCourse.selectedCourse;
+        course = course_overview.selectedCourse;
         prerequisite = new Prerequisite();
         database = FirebaseDatabase.getInstance();
         onSetTitle();

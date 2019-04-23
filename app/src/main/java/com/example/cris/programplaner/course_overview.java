@@ -34,7 +34,7 @@ public class course_overview extends MainActivity {
     String UserID;
     FirebaseAuth mAuth;
     Prerequisite prerequisite;
-    String SelectedCourse = RetrieveCourse.selectedCourse;
+    public static String selectedCourse;
     String P1,P2;
 
     @Override
@@ -75,11 +75,12 @@ public class course_overview extends MainActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(course_overview.this,RetrieveCourse.class));
+                //startActivity(new Intent(course_overview.this,RetrieveCourse.class));
+                course_overview.super.onBackPressed();
             }
         });
         refOverview = database.getReference("Course"); //Snapshot of course table
-        Query Overview = refOverview.orderByChild("Code").equalTo(SelectedCourse); //Find course user clicked on
+        Query Overview = refOverview.orderByChild("Code").equalTo(selectedCourse); //Find course user clicked on
 
         Overview.addValueEventListener(new ValueEventListener() {
             @Override
@@ -117,7 +118,7 @@ public class course_overview extends MainActivity {
 
         final TextView tvPrerequisite = (TextView)findViewById(R.id.prerequisite);
         refPrerequisite = database.getReference("Prerequisite");
-        Query Prerequisite = refPrerequisite.orderByChild("Code").equalTo(SelectedCourse);
+        Query Prerequisite = refPrerequisite.orderByChild("Code").equalTo(selectedCourse);
         Prerequisite.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot2) {
@@ -195,7 +196,7 @@ public class course_overview extends MainActivity {
         });
     }
     private void checkPre() {
-        if(listPre.contains(SelectedCourse)){
+        if(listPre.contains(selectedCourse)){
 
 
 
@@ -204,20 +205,20 @@ public class course_overview extends MainActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     try{
-                        if (dataSnapshot.child(SelectedCourse).child("P2").getValue().toString()!=null){
-                            P1 = dataSnapshot.child(SelectedCourse).child("P1").getValue().toString();
-                            P2 = dataSnapshot.child(SelectedCourse).child("P2").getValue().toString();
+                        if (dataSnapshot.child(selectedCourse).child("P2").getValue().toString()!=null){
+                            P1 = dataSnapshot.child(selectedCourse).child("P1").getValue().toString();
+                            P2 = dataSnapshot.child(selectedCourse).child("P2").getValue().toString();
                             if (listRe.contains(P1)==false&&listRe.contains(P2)==false){
                                 Toast.makeText(course_overview.this, "You need to plan " + P1 +
-                                        " and " +P2+ " before planning "+SelectedCourse, Toast.LENGTH_LONG).show();
+                                        " and " +P2+ " before planning "+selectedCourse, Toast.LENGTH_LONG).show();
 
                             }
                             else if(listRe.contains(P1)==false){
-                                Toast.makeText(course_overview.this, "You need to plan " + P1 + " before planning "+SelectedCourse, Toast.LENGTH_LONG).show();
+                                Toast.makeText(course_overview.this, "You need to plan " + P1 + " before planning "+selectedCourse, Toast.LENGTH_LONG).show();
 
                             }
                             else if(listRe.contains(P2)==false){
-                                Toast.makeText(course_overview.this, "You need to plan " + P2 + " before planning "+SelectedCourse, Toast.LENGTH_LONG).show();
+                                Toast.makeText(course_overview.this, "You need to plan " + P2 + " before planning "+selectedCourse, Toast.LENGTH_LONG).show();
 
                             }
                             else if(listRe.contains(P1)&&listRe.contains(P2)){
@@ -230,10 +231,10 @@ public class course_overview extends MainActivity {
 
                     }
                     catch(Exception e){
-                        if (dataSnapshot.child(SelectedCourse).child("P1").getValue().toString()!=null){
-                            P1 = dataSnapshot.child(SelectedCourse).child("P1").getValue().toString();
+                        if (dataSnapshot.child(selectedCourse).child("P1").getValue().toString()!=null){
+                            P1 = dataSnapshot.child(selectedCourse).child("P1").getValue().toString();
                             if(listRe.contains(P1)==false){
-                                Toast.makeText(course_overview.this, "You need to plan " + P1 + " before planning "+SelectedCourse, Toast.LENGTH_LONG).show();
+                                Toast.makeText(course_overview.this, "You need to plan " + P1 + " before planning "+selectedCourse, Toast.LENGTH_LONG).show();
 
                             }
                             else if(listRe.contains(P1)){
@@ -257,8 +258,8 @@ public class course_overview extends MainActivity {
     }
 
     private void checkRe() {
-        if (listRe.contains(SelectedCourse)) {
-            Toast.makeText(course_overview.this, "You have planned " + SelectedCourse + " already", Toast.LENGTH_LONG).show();
+        if (listRe.contains(selectedCourse)) {
+            Toast.makeText(course_overview.this, "You have planned " + selectedCourse + " already", Toast.LENGTH_LONG).show();
 
         }  else {
             checkPre();

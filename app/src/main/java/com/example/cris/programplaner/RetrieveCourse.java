@@ -34,7 +34,7 @@ public class RetrieveCourse extends MainActivity {
     ArrayAdapter <String> adapter;
     CoreCourse course;
     public static String courseType;
-    public static String selectedCourse;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +48,8 @@ public class RetrieveCourse extends MainActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(RetrieveCourse.this,MainActivity.class));
+                //startActivity(new Intent(RetrieveCourse.this,MainActivity.class));
+                RetrieveCourse.super.onBackPressed();
             }
         });
 
@@ -80,10 +81,10 @@ public class RetrieveCourse extends MainActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
                 Intent intent = new Intent(RetrieveCourse.this, course_overview.class);
-                selectedCourse = (listView.getItemAtPosition(i).toString());
-                intent.putExtra(EXTRA_MESSAGE, selectedCourse);
+                course_overview.selectedCourse = (listView.getItemAtPosition(i).toString());
+                intent.putExtra(EXTRA_MESSAGE, course_overview.selectedCourse);
                 startActivity(intent);
-                Toast.makeText(RetrieveCourse.this, "You click on: " + selectedCourse, Toast.LENGTH_SHORT).show();
+                Toast.makeText(RetrieveCourse.this, "You click on: " + course_overview.selectedCourse, Toast.LENGTH_SHORT).show();
             }
         });
     }
