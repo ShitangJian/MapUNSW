@@ -44,12 +44,12 @@ public class Year1_term1 extends AppCompatActivity {
     SemsterCourse scourse;
     int term;
     ImageView back;
-    String Term, course3, course2, course1,P1,P2;
+    String Term, course3, course2, course1, P1, P2;
     DatabaseReference reff;
     DatabaseReference ref;
     DatabaseReference refff;
     ListView listView;
-    ArrayList<String> list,list1;
+    ArrayList<String> list, list1;
     ArrayAdapter<String> adapter;
     DatabaseReference refPrerequisite;
     Prerequisite prerequisite;
@@ -92,8 +92,6 @@ public class Year1_term1 extends AppCompatActivity {
         showCourse3();
 
 
-
-
         add1_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,34 +114,37 @@ public class Year1_term1 extends AppCompatActivity {
         });
 
 
-
-
         comfirmcourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (course1_1.getText().toString().equals("Course 1")) {
+                    Toast.makeText(Year1_term1.this, "You need to select Course 1", Toast.LENGTH_SHORT).show();
+                } else if (course1_2.getText().toString().equals("Course 2")) {
+                    Toast.makeText(Year1_term1.this, "You need to select Course 2", Toast.LENGTH_SHORT).show();
+                } else if (course1_3.getText().toString().equals("Course 3")&&term!=3&&term!=6&&term!=9) {
+                    Toast.makeText(Year1_term1.this, "You need to select Course 3", Toast.LENGTH_SHORT).show();
+                } else {
 
-                getValue();
-                uploadcourse();
-                Toast.makeText(Year1_term1.this, "Successfully Upload", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Year1_term1.this, ProgressionPlanner.class));
+                    getValue();
+                    uploadcourse();
+                    Toast.makeText(Year1_term1.this, "Successfully Upload", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Year1_term1.this, ProgressionPlanner.class));
+                }
 
             }
 
 
-
-    });
+        });
         back.setOnClickListener(new View.OnClickListener()
 
-    {
-        @Override
-        public void onClick (View view){
-        startActivity(new Intent(Year1_term1.this, ProgressionPlanner.class));
+        {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Year1_term1.this, ProgressionPlanner.class));
+            }
+        });
+
     }
-    });
-
-}
-
-
 
 
     private void showCourse3() {
