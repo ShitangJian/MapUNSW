@@ -82,21 +82,24 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="119dp"
+                android:layout_width="116dp"
                 android:layout_height="24dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif-smallcaps"
                 android:text="Program Preview"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.153" />
+                app:layout_constraintVertical_bias="0.151" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -111,6 +114,7 @@
                 android:gravity="center"
                 android:text="@string/DegreeOverview"
                 android:textSize="14dp"
+                android:fontFamily="sans-serif-light"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -139,16 +143,17 @@
                 android:layout_height="24dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif-smallcaps"
                 android:text="Planned Courses"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/imageView5"
+                app:layout_constraintHorizontal_bias="0.524"
                 app:layout_constraintStart_toStartOf="@id/imageView5"
-                app:layout_constraintTop_toTopOf="@id/imageView5"
-                app:layout_constraintVertical_bias="0.153" />
+                app:layout_constraintTop_toTopOf="@id/imageView5" />
 
 
 
