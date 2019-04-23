@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +44,13 @@ public class RetrieveCourse extends MainActivity {
         listView = (ListView) findViewById(R.id.listView);
 
         title();
+        ImageView back = (ImageView)findViewById(R.id.backA);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RetrieveCourse.this,MainActivity.class));
+            }
+        });
 
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Course");

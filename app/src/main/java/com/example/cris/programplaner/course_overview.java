@@ -71,6 +71,13 @@ public class course_overview extends MainActivity {
         final TextView circleT1 = (TextView)findViewById(R.id.circleT1);
         final TextView circleT2 = (TextView)findViewById(R.id.circleT2);
         final TextView circleT3 = (TextView)findViewById(R.id.circleT3);
+        ImageView back = (ImageView)findViewById(R.id.backB);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(course_overview.this,RetrieveCourse.class));
+            }
+        });
         refOverview = database.getReference("Course"); //Snapshot of course table
         Query Overview = refOverview.orderByChild("Code").equalTo(SelectedCourse); //Find course user clicked on
 

@@ -9,29 +9,33 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="731dp"
         android:background="@drawable/top_bg">
 
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profile_image"
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="110dp"
             android:src="@drawable/default_user_icon"
-            app:civ_border_width="0dp"
             app:civ_border_color="#FF000000"
-            android:layout_marginTop="10dp"/>
-    </RelativeLayout>
+            app:civ_border_width="0dp" />
 
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="99dp"
+            app:srcCompat="@drawable/logo" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="430dp"
         android:layout_marginLeft="24dp"
+        android:layout_marginTop="-510dp"
         android:layout_marginRight="24dp"
-        android:layout_marginTop="-300dp"
         android:background="@drawable/corn_bg"
         android:orientation="vertical">
 
@@ -83,8 +87,8 @@
             android:layout_width="match_parent"
             android:layout_height="0.5px"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="12dp"
+            android:layout_marginRight="20dp"
             android:background="#ffe5e5e5" />
 
         <TextView
@@ -112,8 +116,8 @@
             android:layout_width="match_parent"
             android:layout_height="0.5px"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="12dp"
+            android:layout_marginRight="20dp"
             android:background="#ffe5e5e5" />
 
         <TextView
@@ -134,15 +138,15 @@
             android:hint="Please enter program name."
             android:textColor="#323232"
             android:textColorHint="#969696"
-            android:textSize="13sp"/>
+            android:textSize="13sp" />
 
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0.5px"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="12dp"
+            android:layout_marginRight="20dp"
             android:background="#ffe5e5e5" />
 
         <RadioGroup
@@ -159,20 +163,12 @@
         android:layout_width="250dp"
         android:layout_height="44dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="-42dp"
+        android:layout_marginTop="-20dp"
         android:background="@drawable/button"
         android:gravity="center"
         android:text="Start Journey"
         android:textColor="#fff"
         android:textSize="20sp" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="30dp" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="105dp"
-        app:srcCompat="@drawable/logo" />
 </LinearLayout>

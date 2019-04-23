@@ -64,6 +64,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
         mAuth = FirebaseAuth.getInstance();
 
+
         //create user
         user = new User();
 
@@ -136,6 +137,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         //checking if success
                         if (task.isSuccessful()) {
+                            UserID = mAuth.getCurrentUser().getUid();
                             //display some message here
                             uploadimage();
                             uploadDetail();
@@ -154,6 +156,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void uploadDetail() {
+        UserID = mAuth.getCurrentUser().getUid();
         ref = FirebaseDatabase.getInstance().getReference("User");
         getValue();
         ref.addValueEventListener(new ValueEventListener() {
@@ -176,7 +179,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void uploadimage() {
-        UserID = mAuth.getCurrentUser().getUid();
         storageReference = FirebaseStorage.getInstance().getReference("profile/" + UserID + ".jpg");
 
         if (selectdImage != null) {

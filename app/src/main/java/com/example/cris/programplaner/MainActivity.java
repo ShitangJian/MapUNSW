@@ -106,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
         reff = FirebaseDatabase.getInstance().getReference("User").child(UserID);
         reff.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String a = dataSnapshot.child("name").getValue().toString();
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot4) {
+                String a = dataSnapshot4.child("name").getValue(String.class);
                 name.setText("Hi "+a);
             }
 
@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
 
         list = new ArrayList<>();
         adapter1 = new ArrayAdapter<String>(this,R.layout.degree_overview_format,R.id.degreeOverviewInfo, list);
-
+try{
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -240,6 +240,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
-        ref.addListenerForSingleValueEvent(eventListener);
+        ref.addListenerForSingleValueEvent(eventListener);}
+        catch (Exception e){
+
+        }
     }
 }

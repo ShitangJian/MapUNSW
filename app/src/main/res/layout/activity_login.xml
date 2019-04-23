@@ -141,7 +141,6 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Don't have account? Register here!"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused" />
-    </RelativeLayout>
+            android:textColor="@color/common_google_signin_btn_text_dark_focused" />    </RelativeLayout>
 
 </LinearLayout>

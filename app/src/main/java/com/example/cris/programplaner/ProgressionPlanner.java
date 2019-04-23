@@ -187,8 +187,8 @@ public class ProgressionPlanner extends AppCompatActivity {
         reff.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String a = dataSnapshot.child("name").getValue().toString();
-                name.setText(a);
+                String nameee = dataSnapshot.child("name").getValue().toString();
+                name.setText(nameee);
             }
 
             @Override
