@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         reff.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot4) {
-                String a = dataSnapshot4.child("name").getValue(String.class);
+                String a = dataSnapshot4.child("name").getValue().toString();
                 name.setText("Hi "+a);
             }
 
@@ -200,8 +200,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void implementCourseoverview(){
-        mAuth = FirebaseAuth.getInstance();
-        UserID = mAuth.getCurrentUser().getUid();
         plannedCourse = new PlannedCourse();
 
         ref = FirebaseDatabase.getInstance().getReference("User").child(UserID);

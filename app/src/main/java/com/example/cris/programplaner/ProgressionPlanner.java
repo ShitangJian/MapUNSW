@@ -45,7 +45,7 @@ public class ProgressionPlanner extends AppCompatActivity {
     String UserID;
     FirebaseAuth mAuth;
     File localFile;
-    CircleImageView icon;
+    CircleImageView icon,icon2;
     DatabaseReference reff;
     TextView name;
     int UoC;
@@ -61,7 +61,7 @@ public class ProgressionPlanner extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_term);
-        icon = (CircleImageView) findViewById(R.id.profile_image_icon);
+        icon2 = (CircleImageView) findViewById(R.id.profile_image_icon1);
         name= (TextView)findViewById(R.id.name1);
         Button T1 = (Button) findViewById(R.id.term1);
         Button T2 = (Button) findViewById(R.id.term2);
@@ -215,6 +215,7 @@ public class ProgressionPlanner extends AppCompatActivity {
                         public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                             Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
                             icon.setImageBitmap(bitmap);
+                            icon2.setImageBitmap(bitmap);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -249,6 +250,7 @@ public class ProgressionPlanner extends AppCompatActivity {
                         public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                             Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
                             icon.setImageBitmap(bitmap);
+                            icon2.setImageBitmap(bitmap);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                 @Override
